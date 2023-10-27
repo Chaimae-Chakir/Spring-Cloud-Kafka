@@ -1,5 +1,7 @@
 # Spring-Cloud-Streams-Kafka
+
 **Création d'une application Spring Cloud Streams avec Kafka :**
+
 <ul>
   <li>Démarrage de kafka avec docker (Créer le fichier docker-compose.yml,  Démarrer les conteneurs docker : zookeeper et kafka-broker, Tester avec Kafka-console-producer et kafka-console-consumer)</li>
   <li>Un Service Producer KAFKA via un Rest Controller</li>
@@ -11,16 +13,17 @@
 </ul>
 
 ## Architecture
+
 <div align="center">
-<img src="https://github.com/Akasmiou-ouassima/Spring-Cloud-Streams-Kafka/blob/master/captures/img.png" width="65%">
+<img src="https://github.com/Chaimae-Chakir/Spring-Cloud-Streams-Kafka/blob/master/captures/img.png" width="65%">
 </div>
 
 ## Démarrage de kafka avec docker
 
-> Création de fichier docker compose 
+> Création de fichier docker compose
 
 <div align="center">
-<img src="https://github.com/Akasmiou-ouassima/Spring-Cloud-Streams-Kafka/blob/master/captures/9.jpg" width="50%" >
+<img src="https://github.com/Chaimae-Chakir/Spring-Cloud-Streams-Kafka/blob/master/captures/9.jpg" width="50%" >
 </div>
 
 > Démarrage les conteneurs docker : zookeeper et kafka-broker
@@ -28,38 +31,41 @@
 ```bash
     docker-compose up -d
 ```
+
 <div align="center">
-<img src="https://github.com/Akasmiou-ouassima/Spring-Cloud-Streams-Kafka/blob/master/captures/6.jpg" width="50%">
+<img src="https://github.com/Chaimae-Chakir/Spring-Cloud-Streams-Kafka/blob/master/captures/6.jpg" width="50%">
 </div>
 
 <div align="center">
-<img src="https://github.com/Akasmiou-ouassima/Spring-Cloud-Streams-Kafka/blob/master/captures/7.jpg" width="50%">
+<img src="https://github.com/Chaimae-Chakir/Spring-Cloud-Streams-Kafka/blob/master/captures/7.jpg" width="50%">
 </div>
 
 ```bash
     docker ps
 ```
-<div align="center">
-<img src="https://github.com/Akasmiou-ouassima/Spring-Cloud-Streams-Kafka/blob/master/captures/8.jpg" width="70%">
-</div>
 
+<div align="center">
+<img src="https://github.com/Chaimae-Chakir/Spring-Cloud-Streams-Kafka/blob/master/captures/8.jpg" width="70%">
+</div>
 
 > Tester avec Kafka-console-producer et kafka-console-consumer
 
 <div align="center">
-<img src="https://github.com/Akasmiou-ouassima/Spring-Cloud-Streams-Kafka/blob/master/captures/10.jpg" width="50%">
+<img src="https://github.com/Chaimae-Chakir/Spring-Cloud-Streams-Kafka/blob/master/captures/10.jpg" width="50%">
 </div>
 
 <div align="center">
-<img src="https://github.com/Akasmiou-ouassima/Spring-Cloud-Streams-Kafka/blob/master/captures/11.jpg" width="50%">
+<img src="https://github.com/Chaimae-Chakir/Spring-Cloud-Streams-Kafka/blob/master/captures/11.jpg" width="50%">
 </div>
 
-## Les dépendances utilisés 
+## Les dépendances utilisés
+
 <div align="center">
-<img src="https://github.com/Akasmiou-ouassima/Spring-Cloud-Streams-Kafka/blob/master/captures/D%C3%A9pendances.jpg">
+<img src="https://github.com/Chaimae-Chakir/Spring-Cloud-Streams-Kafka/blob/master/captures/D%C3%A9pendances.jpg">
 </div>
 
 ## Un Service Producer KAFKA via un Rest Controller
+
 ```java
 @RestController
 public class PageEventRestController {
@@ -73,15 +79,17 @@ public class PageEventRestController {
     }
 }
 ```
+
 <div align="center">
-<img src="https://github.com/Akasmiou-ouassima/Spring-Cloud-Streams-Kafka/blob/master/captures/1.jpg" width="50%">
+<img src="https://github.com/Chaimae-Chakir/Spring-Cloud-Streams-Kafka/blob/master/captures/1.jpg" width="50%">
 </div>
 
 <div align="center">
-<img src="https://github.com/Akasmiou-ouassima/Spring-Cloud-Streams-Kafka/blob/master/captures/2.jpg" width="50%">
+<img src="https://github.com/Chaimae-Chakir/Spring-Cloud-Streams-Kafka/blob/master/captures/2.jpg" width="50%">
 </div>
 
 ## Un Service Consumer KAFKA
+
 ```java
 @Service
 public class PageEventService {
@@ -95,11 +103,13 @@ public class PageEventService {
     }
   }
 ```
+
 <div align="center">
-<img src="https://github.com/Akasmiou-ouassima/Spring-Cloud-Streams-Kafka/blob/master/captures/3.jpg" width="50%">
+<img src="https://github.com/Chaimae-Chakir/Spring-Cloud-Streams-Kafka/blob/master/captures/3.jpg" width="50%">
 </div>
 
 ## Un Service Supplier KAFKA
+
 ```java
 @Bean
     public Supplier<PageEvent> pageEventSupplier() {
@@ -109,11 +119,13 @@ public class PageEventService {
                 new Random().nextInt(9000));
     }
 ```
+
 <div align="center">
-<img src="https://github.com/Akasmiou-ouassima/Spring-Cloud-Streams-Kafka/blob/master/captures/4.jpg" width="50%">
+<img src="https://github.com/Chaimae-Chakir/Spring-Cloud-Streams-Kafka/blob/master/captures/4.jpg" width="50%">
 </div>
 
 ## Un Service Function KAFKA
+
 ```java
 @Bean
     public Function<PageEvent, PageEvent> pageEventFunction() {
@@ -123,12 +135,14 @@ public class PageEventService {
             return input;
         };
     }
-  ```
+```
+
 <div align="center">
-<img src="https://github.com/Akasmiou-ouassima/Spring-Cloud-Streams-Kafka/blob/master/captures/5.jpg" width="50%">
+<img src="https://github.com/Chaimae-Chakir/Spring-Cloud-Streams-Kafka/blob/master/captures/5.jpg" width="50%">
 </div>
 
 ## Fichier de configuration
+
 ```java
 spring.cloud.stream.bindings.pageEventConsumer-in-0.destination=R1
 spring.cloud.stream.bindings.pageEventSupplier-out-0.destination=R2
@@ -136,6 +150,4 @@ spring.cloud.function.definition=pageEventConsumer;pageEventSupplier;pageEventFu
 spring.cloud.stream.poller.fixed-delay=100
 spring.cloud.stream.bindings.pageEventFunction-in-0.destination=R1
 spring.cloud.stream.bindings.pageEventFunction-out-0.destination=R3
-  ```
-
-
+```
